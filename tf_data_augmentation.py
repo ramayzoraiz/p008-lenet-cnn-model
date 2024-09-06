@@ -1,3 +1,17 @@
+"""
+input: dataset
+output: augmented dataset
+process:
+dataset ---> (resize_ohc) ---> org
+  |---> (central_crop) (resize_ohc) (flip_left_right) ---> temp1
+  |---> (top_left_crop) (resize_ohc) (random_hue) (random_flip_left_right) ---> temp2
+  |---> (top_right_crop) (resize_ohc) (random_brightness) (random_flip_left_right) ---> temp3
+  |---> (bottom_left_crop) (resize_ohc) (random_saturation) (random_flip_left_right) ---> temp4
+  |---> (bottom_right_crop) (resize_ohc) (random_contrast) (random_flip_left_right) ---> temp5
+org + temp1 + temp2 + temp3 + temp4 + temp5 ---> train_ds
+train_ds ---> (norm)(cache)(shuffle)(batch)(pretch) ---> train_ds
+"""
+
 import tensorflow as tf
 import os
 
@@ -72,11 +86,14 @@ def bottom_right_crop(img, label):
 
 
 def data_augment(train_ds, val_ds):
-
+    # org dataset: resize image, one hot encode label on raw dataset
     org = train_ds.map(resize_ohc, num_parallel_calls=AUTOTUNE)
     xforms = [central_crop, top_left_crop, top_right_crop, bottom_left_crop, bottom_right_crop]
     for xform in xforms:
+        # apply transformation to raw dataset
+        ## first apply crop, then resize and one hot encode, then flip
         temp = train_ds.map(xform, num_parallel_calls=AUTOTUNE)
+        # concatenate transformed dataset to org dataset
         org = org.concatenate(temp)
     
     train_ds = org.map(norm, num_parallel_calls=AUTOTUNE).cache().shuffle(buffer_size=len(train_ds)*4,seed=42).batch(BATCH_SIZE, deterministic=True, num_parallel_calls=AUTOTUNE).prefetch(buffer_size=AUTOTUNE)
