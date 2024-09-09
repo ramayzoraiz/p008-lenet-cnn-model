@@ -16,8 +16,8 @@ LeNet archituectures are used on this data set. It is clear that this model is s
 | [1_lenet_sgd_avgpool](1_lenet_sgd_avgpool.ipynb) | Original LeNet architecture with SGD momentum optimizer |
 | [1_lenet_sgd](1_lenet_sgd.ipynb) | LeNet architecture(MaxPool used) with SGD momentum optimizer |
 | [1_lenet_adam](1_lenet_adam.ipynb) | LeNet architecture(MaxPool used) with Adam optimizer |
-| [2_reg_sgd](2_lenet_reg_sgd.ipynb) | LeNet architecture(MaxPool used) with SGD momentum optimizer and L2 regularization |
-| [2_reg_adam](2_lenet_reg_adam.ipynb) | LeNet architecture(MaxPool used) with Adam optimizer and L2 regularization |
+| [2_lenet_reg_sgd](2_lenet_reg_sgd.ipynb) | LeNet architecture(MaxPool used) with SGD momentum optimizer and L2 regularization |
+| [2_lenet_reg_adam](2_lenet_reg_adam.ipynb) | LeNet architecture(MaxPool used) with Adam optimizer and L2 regularization |
 | [3_lenet_adamw](3_lenet_adamw.ipynb) | LeNet architecture(MaxPool used) with Adam optimizer and weight decay |
 | [4_lenet_bn_conv_reg_sgd](4_lenet_bn_conv_reg_sgd.ipynb) | Convolution BatchNorm LeNet architecture(MaxPool used) with SGD momentum optimizer and L2 regularization |
 | [4_lenet_bn_conv_reg_adam](4_lenet_bn_conv_reg_adam.ipynb) | Convolution BatchNorm LeNet architecture(MaxPool used) with adam optimizer and L2 regularization |
@@ -47,8 +47,8 @@ Interesting, adam with all layers BatchNorm and no regulariztion performed most 
 | [1_lenet_sgd_avgpool](1_lenet_sgd_avgpool.ipynb)    | 14.94 | 13.53 |       | 0.001,0.0001, 0.00001 | 10,5, 5 | 3.1279 | 3.1832 |
 | [1_lenet_sgd](1_lenet_sgd.ipynb)                    | 17.61 | 16.26 |       | 0.001,0.0001, 0.00001 | 10,5, 5 | 3.0099 | 3.0504 |
 | [1_lenet_adam](1_lenet_adam.ipynb)                  | 24.36 | 21.07 |       | 0.0001,0.00001,0.000001 | 6,6,6 | 2.7808 | 2.9439 |
-| [2_reg_sgd](2_lenet_reg_sgd.ipynb)                  | 18.60 | 17.35 | 0.005 | 0.001,0.0001,0.00001 | 12,5,5 | 4.6405 | 4.6793
-| [2_reg_adam](2_lenet_reg_adam.ipynb)                | 21.99 | 20.53 | 0.005 | 0.0001,0.00001, 0.000001 | 10,6, 6 | 3.4095 | 3.4806 |
+| [2_lenet_reg_sgd](2_lenet_reg_sgd.ipynb)                  | 18.60 | 17.35 | 0.005 | 0.001,0.0001,0.00001 | 12,5,5 | 4.6405 | 4.6793
+| [2_lenet_reg_adam](2_lenet_reg_adam.ipynb)                | 21.99 | 20.53 | 0.005 | 0.0001,0.00001, 0.000001 | 10,6, 6 | 3.4095 | 3.4806 |
 | [3_lenet_adamw](3_lenet_adamw.ipynb)                | 22.73 | 20.25 |wd=0.07| 0.0001,0.00001, 0.000001 | 6,6, 6 | 2.8268 | 2.9601
 | **[4_lenet_bn_conv_reg_sgd](4_lenet_bn_conv_reg_sgd.ipynb)**  | 28.80 | 28.79 | 0.005 | 0.01,0.001,0.0001, 0.00005 | 13,15,5, 5 | 2.6340 | 2.7398 |
 | **[4_lenet_bn_conv_reg_adam](4_lenet_bn_conv_reg_adam.ipynb)**| 32.34| 32.15 | 0.01  | 0.001,0.00005,0.00001, 0.00001 | 10,5,5, 5 | 2.7459 | 2.8441 |
